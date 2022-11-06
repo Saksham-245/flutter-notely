@@ -67,6 +67,8 @@ flutter:
   assets:
     - assets/images/onboarding.png
     - assets/splash/splash.json
+    - assets/images/profile.png
+    - assets/images/home.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

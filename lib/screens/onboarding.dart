@@ -63,7 +63,7 @@ class Onboarding extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 75.h,
+                height: 65.h,
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -103,7 +103,7 @@ class Onboarding extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 20.h,
+                height: 15.h,
               ),
               TextButton(
                 onPressed: () {},

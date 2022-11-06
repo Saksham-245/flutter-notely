@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:notely/components/text_inputs.dart';
+import 'package:notely/screens/home.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
@@ -68,132 +70,33 @@ class SignUp extends StatelessWidget {
             SizedBox(
               height: 52.h,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 28.w),
-              child: TextField(
-                controller: fullNameController,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: const Color.fromRGBO(89, 85, 80, 1),
-                  fontWeight: Theme.of(context).textTheme.headline3?.fontWeight,
-                  fontFamily: Theme.of(context).textTheme.headline3?.fontFamily,
-                ),
-                decoration: InputDecoration(
-                  hintText: 'Salman Khan',
-                  label: Text(
-                    'Full Name',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: const Color.fromRGBO(89, 85, 80, 1),
-                      fontWeight:
-                          Theme.of(context).textTheme.headline3?.fontWeight,
-                      fontFamily:
-                          Theme.of(context).textTheme.headline3?.fontFamily,
-                    ),
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        color: Color.fromRGBO(242, 229, 213, 1), width: 1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        color: Color.fromRGBO(242, 229, 213, 1), width: 1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ),
+            TextInputs(
+              controller: fullNameController,
+              labelText: 'Full Name',
+              hintText: 'Salman Khan',
+              keyboardType: TextInputType.name,
             ),
             SizedBox(
               height: 45.h,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 28.w),
-              child: TextField(
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: const Color.fromRGBO(89, 85, 80, 1),
-                  fontWeight: Theme.of(context).textTheme.headline3?.fontWeight,
-                  fontFamily: Theme.of(context).textTheme.headline3?.fontFamily,
-                ),
-                decoration: InputDecoration(
-                  hintText: 'mesalmanwap@gmail.com',
-                  label: Text(
-                    'Email Address',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: const Color.fromRGBO(89, 85, 80, 1),
-                      fontWeight:
-                          Theme.of(context).textTheme.headline3?.fontWeight,
-                      fontFamily:
-                          Theme.of(context).textTheme.headline3?.fontFamily,
-                    ),
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        color: Color.fromRGBO(242, 229, 213, 1), width: 1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        color: Color.fromRGBO(242, 229, 213, 1), width: 1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ),
+            TextInputs(
+              controller: emailController,
+              labelText: 'Email Address',
+              hintText: 'mesalmanwap@gmail.com',
+              keyboardType: TextInputType.emailAddress,
             ),
             SizedBox(
               height: 45.h,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 28.w),
-              child: TextField(
-                controller: passwordController,
-                obscureText: true,
-                keyboardType: TextInputType.visiblePassword,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: const Color.fromRGBO(89, 85, 80, 1),
-                  fontWeight: Theme.of(context).textTheme.headline3?.fontWeight,
-                  fontFamily: Theme.of(context).textTheme.headline3?.fontFamily,
-                ),
-                decoration: InputDecoration(
-                  label: Text(
-                    'Password',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: const Color.fromRGBO(89, 85, 80, 1),
-                      fontWeight:
-                          Theme.of(context).textTheme.headline3?.fontWeight,
-                      fontFamily:
-                          Theme.of(context).textTheme.headline3?.fontFamily,
-                    ),
-                  ),
-                  hintText: '############',
-                  filled: true,
-                  fillColor: Colors.white,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        color: Color.fromRGBO(242, 229, 213, 1), width: 1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        color: Color.fromRGBO(242, 229, 213, 1), width: 1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ),
+            TextInputs(
+              controller: passwordController,
+              labelText: 'Password',
+              hintText: '############',
+              keyboardType: TextInputType.visiblePassword,
             ),
             Padding(
               padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom / 3,
+                bottom: MediaQuery.of(context).viewInsets.bottom / 2,
               ),
             ),
             SizedBox(
@@ -221,6 +124,14 @@ class SignUp extends StatelessWidget {
                   'email': emailController.text,
                   'password': passwordController.text,
                 });
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const Home();
+                    },
+                  ),
+                );
               },
               child: Text(
                 'Create Account',
