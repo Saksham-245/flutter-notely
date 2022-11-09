@@ -1,16 +1,43 @@
+import 'package:cross_local_storage/cross_local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:notely/components/text_inputs.dart';
-import 'package:notely/screens/home.dart';
+import '../components/text_inputs.dart';
+import '../screens/home.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
   @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  final _fullNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  late LocalStorageInterface _localStorage;
+
+  _initLocalStorage() async {
+    _localStorage = await LocalStorage.getInstance();
+  }
+
+  @override
+  void dispose() {
+    _fullNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initLocalStorage();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var fullNameController = TextEditingController();
-    var emailController = TextEditingController();
-    var passwordController = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color.fromRGBO(248, 238, 226, 1),
@@ -71,7 +98,7 @@ class SignUp extends StatelessWidget {
               height: 52.h,
             ),
             TextInputs(
-              controller: fullNameController,
+              controller: _fullNameController,
               labelText: 'Full Name',
               hintText: 'Salman Khan',
               keyboardType: TextInputType.name,
@@ -80,7 +107,7 @@ class SignUp extends StatelessWidget {
               height: 45.h,
             ),
             TextInputs(
-              controller: emailController,
+              controller: _emailController,
               labelText: 'Email Address',
               hintText: 'mesalmanwap@gmail.com',
               keyboardType: TextInputType.emailAddress,
@@ -89,7 +116,7 @@ class SignUp extends StatelessWidget {
               height: 45.h,
             ),
             TextInputs(
-              controller: passwordController,
+              controller: _passwordController,
               labelText: 'Password',
               hintText: '############',
               keyboardType: TextInputType.visiblePassword,
@@ -118,18 +145,13 @@ class SignUp extends StatelessWidget {
                   vertical: 16.h,
                 ),
               ),
-              onPressed: () {
-                print({
-                  'fullName': fullNameController.text,
-                  'email': emailController.text,
-                  'password': passwordController.text,
-                });
+              onPressed: () async {
+                await _localStorage.setBool('isOnboarded', true);
+                // ignore: use_build_context_synchronously
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) {
-                      return const Home();
-                    },
+                    builder: (context) => const Home(),
                   ),
                 );
               },

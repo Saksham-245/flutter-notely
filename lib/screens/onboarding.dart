@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:notely/screens/signup.dart';
+import 'package:flutter_svg/svg.dart';
+import '../screens/signup.dart';
 
 class Onboarding extends StatelessWidget {
   const Onboarding({super.key});
@@ -30,10 +31,10 @@ class Onboarding extends StatelessWidget {
             height: 118.h,
           ),
           Center(
-            child: Image.asset(
-              'assets/images/onboarding.png',
-              height: 197.h,
+            child: SvgPicture?.asset(
+              'assets/images/onboarding.svg',
               width: 268.w,
+              height: 197.h,
             ),
           ),
           SizedBox(
@@ -82,13 +83,13 @@ class Onboarding extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const SignUp();
-                      },
-                    ),
+                  Navigator.of(context).pushReplacement(
+                    PageRouteBuilder(pageBuilder: (context, animation, _) {
+                      return FadeTransition(
+                        opacity: animation,
+                        child: const SignUp(),
+                      );
+                    }),
                   );
                 },
                 child: Text(

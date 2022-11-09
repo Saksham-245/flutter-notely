@@ -1,27 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:notely/components/drawer_list.dart';
+import 'package:flutter_svg/svg.dart';
+import '../components/drawer_list.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _key = GlobalKey();
     return Scaffold(
-      drawer: DrawerList(),
+      drawer: const DrawerList(),
       backgroundColor: const Color.fromRGBO(248, 238, 226, 1),
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: const Icon(Icons.search),
-            color: Colors.black,
             onPressed: () {},
+            icon: SvgPicture.asset(
+              'assets/images/search.svg',
+              width: 20.w,
+              height: 20.h,
+            ),
           ),
         ],
         leading: Builder(
           builder: (context) => IconButton(
-              icon: Icon(Icons.menu),
+              tooltip: 'Menu',
+              icon: SvgPicture.asset(
+                'assets/images/drawer.svg',
+                width: 20.w,
+                height: 20.h,
+              ),
               color: Colors.black,
               onPressed: () => Scaffold.of(context).openDrawer()),
         ),
@@ -45,8 +53,8 @@ class Home extends StatelessWidget {
             height: 127.h,
           ),
           Center(
-            child: Image.asset(
-              'assets/images/home.png',
+            child: SvgPicture.asset(
+              'assets/images/home.svg',
               height: 221.h,
               width: 268.w,
             ),

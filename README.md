@@ -1,6 +1,6 @@
 # notely
 
-A new Flutter project.
+A note taking Application
 
 ## Getting Started
 

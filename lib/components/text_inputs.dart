@@ -22,6 +22,7 @@ class TextInputs extends StatelessWidget {
       child: TextField(
         controller: controller,
         keyboardType: keyboardType,
+        obscureText: keyboardType == TextInputType.visiblePassword,
         style: TextStyle(
           fontSize: 16,
           color: const Color.fromRGBO(89, 85, 80, 1),

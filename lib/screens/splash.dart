@@ -1,6 +1,8 @@
+import 'package:cross_local_storage/cross_local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:notely/screens/onboarding.dart';
+import '../screens/home.dart';
+import '../screens/onboarding.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -10,16 +12,25 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  late LocalStorageInterface _localStorage;
+
+  _initLocalStorage() async {
+    _localStorage = await LocalStorage.getInstance();
+  }
+
   @override
   void initState() {
     super.initState();
+    _initLocalStorage();
     Future.delayed(
       const Duration(seconds: 6),
       () => {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const Onboarding(),
+            builder: (context) => _localStorage.getBool('isOnboarded') == true
+                ? const Home()
+                : const Onboarding(),
           ),
         ),
       },

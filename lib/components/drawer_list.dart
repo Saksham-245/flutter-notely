@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class DrawerList extends StatelessWidget {
+class DrawerList extends StatefulWidget {
   const DrawerList({super.key});
 
+  @override
+  State<DrawerList> createState() => _DrawerListState();
+}
+
+class _DrawerListState extends State<DrawerList> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -11,7 +17,7 @@ class DrawerList extends StatelessWidget {
       child: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.zero,
+            padding: EdgeInsets.only(top: 16.h),
             child: Text(
               'Notely',
               style: TextStyle(
@@ -68,6 +74,165 @@ class DrawerList extends StatelessWidget {
                   ),
                 )
               ],
+            ),
+          ),
+          ListTile(
+            leading: SvgPicture.asset(
+              'assets/images/premium.svg',
+              width: 36.w,
+              height: 36.h,
+            ),
+            title: Text(
+              'Buy Premium',
+              style: TextStyle(
+                fontSize: 16.sp,
+                color: const Color.fromRGBO(89, 85, 85, 1),
+                fontFamily: Theme.of(context).textTheme.headline3?.fontFamily,
+                fontWeight: Theme.of(context).textTheme.headline3?.fontWeight,
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+            trailing: SvgPicture.asset(
+              'assets/images/arrow.svg',
+              width: 20.w,
+              height: 20.h,
+            ),
+          ),
+          SizedBox(
+            height: 24.h,
+          ),
+          ListTile(
+            leading: SvgPicture.asset(
+              'assets/images/edit-profile.svg',
+              width: 36.w,
+              height: 36.h,
+            ),
+            title: Text(
+              'Edit Profile',
+              style: TextStyle(
+                fontSize: 16.sp,
+                color: const Color.fromRGBO(89, 85, 85, 1),
+                fontFamily: Theme.of(context).textTheme.headline3?.fontFamily,
+                fontWeight: Theme.of(context).textTheme.headline3?.fontWeight,
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+            trailing: SvgPicture.asset(
+              'assets/images/arrow.svg',
+              width: 20.w,
+              height: 20.h,
+            ),
+          ),
+          SizedBox(
+            height: 24.h,
+          ),
+          ListTile(
+            leading: SvgPicture.asset(
+              'assets/images/app-theme.svg',
+              width: 36.w,
+              height: 36.h,
+            ),
+            title: Text(
+              'App Theme',
+              style: TextStyle(
+                fontSize: 16.sp,
+                color: const Color.fromRGBO(89, 85, 85, 1),
+                fontFamily: Theme.of(context).textTheme.headline3?.fontFamily,
+                fontWeight: Theme.of(context).textTheme.headline3?.fontWeight,
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+            trailing: SvgPicture.asset(
+              'assets/images/arrow.svg',
+              width: 20.w,
+              height: 20.h,
+            ),
+          ),
+          SizedBox(
+            height: 24.h,
+          ),
+          ListTile(
+            leading: SvgPicture.asset(
+              'assets/images/notification.svg',
+              width: 36.w,
+              height: 36.h,
+            ),
+            title: Text(
+              'Notifications',
+              style: TextStyle(
+                fontSize: 16.sp,
+                color: const Color.fromRGBO(89, 85, 85, 1),
+                fontFamily: Theme.of(context).textTheme.headline3?.fontFamily,
+                fontWeight: Theme.of(context).textTheme.headline3?.fontWeight,
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+            trailing: SvgPicture.asset(
+              'assets/images/arrow.svg',
+              width: 20.w,
+              height: 20.h,
+            ),
+          ),
+          SizedBox(
+            height: 24.h,
+          ),
+          ListTile(
+            leading: SvgPicture.asset(
+              'assets/images/security.svg',
+              width: 36.w,
+              height: 36.h,
+            ),
+            title: Text(
+              'Security',
+              style: TextStyle(
+                fontSize: 16.sp,
+                color: const Color.fromRGBO(89, 85, 85, 1),
+                fontFamily: Theme.of(context).textTheme.headline3?.fontFamily,
+                fontWeight: Theme.of(context).textTheme.headline3?.fontWeight,
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+            trailing: SvgPicture.asset(
+              'assets/images/arrow.svg',
+              width: 20.w,
+              height: 20.h,
+            ),
+          ),
+          SizedBox(
+            height: 24.h,
+          ),
+          ListTile(
+            leading: SvgPicture.asset(
+              'assets/images/logout.svg',
+              width: 36.w,
+              height: 36.h,
+            ),
+            title: Text(
+              'Log Out',
+              style: TextStyle(
+                fontSize: 16.sp,
+                color: const Color.fromRGBO(89, 85, 85, 1),
+                fontFamily: Theme.of(context).textTheme.headline3?.fontFamily,
+                fontWeight: Theme.of(context).textTheme.headline3?.fontWeight,
+              ),
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+            trailing: SvgPicture.asset(
+              'assets/images/arrow.svg',
+              width: 20.w,
+              height: 20.h,
             ),
           ),
         ],
